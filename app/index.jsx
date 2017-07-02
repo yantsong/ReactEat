@@ -1,5 +1,10 @@
+import React from 'react'
+import { render } from 'react-dom'
+import {hashHistory} from 'react-router'
 
-  ReactDOM.render(
-        <h1>12Hello, wor11111sadsadsas111ld!</h1>
-        , document.getElementById('example') )
+import RouteMap from './router/routerMap.jsx'
 
+  render(
+        <RouteMap history={hashHistory} />,
+    document.getElementById('root')
+)

@@ -12,7 +12,11 @@ module.exports = {
     },
     output: {
         path: './dist',
-        filename: '[name][hash].js'
+        filename: '[name].js'
+    },
+
+    resolve: {
+        extensions: ['', '.js', '.jsx']
     },
     module: {
 
@@ -33,9 +37,9 @@ module.exports = {
             // { test: /\.less/, loader: 'style-loader!css-loader!less-loader'}
         ]
     },
-    externals: {
-        'react': 'React'
-    },
+    // externals: {
+    //     'react': 'React'
+    // },
     plugins: [
         //提取公共模块
         new webpack.optimize.CommonsChunkPlugin({
@@ -43,11 +47,12 @@ module.exports = {
             filename: 'js/base.js'
         }),
         //单独打包css
-        new ExtractTextWebpackPlugin('css/[name].css'),
+        new ExtractTextWebpackPlugin(
+            'css/[name].css'),
         //html模板插件
         new HtmlWebpackPlugin({
-            template: './index.html',
-            filename: 'index2.html',
+            template: './app/index.tmpl.html',
+            filename: 'index.html',
             inject: true,
             hash: true,
             chunks: ['commons', 'index']
