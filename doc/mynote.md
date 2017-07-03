@@ -86,3 +86,6 @@ getDefaultProps(){
 ...
 ####Fetch
 需要安装 wahtwg-fetch,以及 es6-promise
+#### react-router
+* install,import { Router,Route,IndexRoute} from 'react-router';
+* 配置路由文件,

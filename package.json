@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --inline"
+    "dev": "webpack-dev-server --inline --port 8088"
   },
   "author": "song",
   "license": "MIT",
@@ -19,13 +19,20 @@
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.29.0",
     "html-withimg-loader": "^0.1.16",
+    "node-sass": "^4.5.3",
+    "open-browser-webpack-plugin": "0.0.5",
+    "postcss-loader": "^0.11.0",
     "react": "^15.6.1",
     "react-addons-pure-render-mixin": "^15.6.0",
     "react-dom": "^15.6.1",
     "react-router": "^2.7.0",
+    "sass-loader": "^4.1.1",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^1.15.0",
     "webpack-dev-server": "^1.16.5"
+  },
+  "dependencies": {
+    "react-router": "^2.7.0"
   }
 }

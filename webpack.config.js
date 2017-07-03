@@ -1,13 +1,14 @@
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 
 module.exports = {
     entry: {
         index: [
             './app/index.jsx',
-            'webpack-dev-server/client?http://localhost:8080/'
+            'webpack-dev-server/client?http://localhost:8088/'
         ]
     },
     output: {
@@ -23,6 +24,7 @@ module.exports = {
         loaders: [
             //单独css
             { test: /\.css$/, loader: ExtractTextWebpackPlugin.extract({ use: "style-loader", ues: "css-loader" }) },
+            { test: /\.scss$/, loader: 'style!css!sass' },
             {
                 test: /\.(js|jsx)$/,
                 loader: 'babel-loader',
@@ -34,7 +36,6 @@ module.exports = {
             //提供html内嵌的imgurl支持
             { test: /\.html$/, loader: 'html-withimg-loader' },
             { test: /\.(png|gif|jpg|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=8192&name=/resource/[name].[ext]' }
-            // { test: /\.less/, loader: 'style-loader!css-loader!less-loader'}
         ]
     },
     // externals: {
@@ -56,10 +57,11 @@ module.exports = {
             inject: true,
             hash: true,
             chunks: ['commons', 'index']
-        })
+        }),
+        new OpenBrowserPlugin({ url: 'http://localhost:8088' })
     ],
     // devServer: {
-    //     port: 8080,
+    //     port: 8088,
     //     inline: true
     // }
 
