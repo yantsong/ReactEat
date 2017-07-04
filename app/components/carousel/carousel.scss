@@ -1,0 +1,25 @@
+.carousel {
+    position: relative;
+    a {
+        position: absolute;
+        top: 50%;
+        margin-top: -35px;
+        display: none;
+    }
+    &:hover a {
+        display: inline-block;
+    }
+    .carleft {
+        left: 0;
+        height: 70px;
+        width: 40px;
+        background: url(http://wx.jledu.com.cn/static/inxweb/img/s-prev-btn.png) no-repeat
+    }
+    .carright {
+        right: 0;
+        left: auto;
+        height: 70px;
+        width: 40px;
+        background: url(http://wx.jledu.com.cn/static/inxweb/img/s-next-btn.png) no-repeat
+    }
+}

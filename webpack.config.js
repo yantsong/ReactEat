@@ -7,8 +7,7 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin')
 module.exports = {
     entry: {
         index: [
-            './app/index.jsx',
-            'webpack-dev-server/client?http://localhost:8088/'
+            './app/index.jsx'
         ]
     },
     output: {
@@ -60,9 +59,13 @@ module.exports = {
         }),
         new OpenBrowserPlugin({ url: 'http://localhost:8088' })
     ],
-    // devServer: {
-    //     port: 8088,
-    //     inline: true
-    // }
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:8080',
+                secure: false
+            }
+        }
+    }
 
 }

@@ -1,4 +1,4 @@
-#Learn React
+# Learn React
 #### init
 * npm init 
 * npm install webpack webpack-dev-devserver --save-dev
@@ -17,18 +17,19 @@
 })
 ```
 #### 生命周期
-#####实例化阶段
+##### 实例化阶段
 * getDefaultProps
 设置默认props值，只调用一次
 ```
 相当于在构造函数中继承父级的propos以及执行上下文环境，即等同于:
 constructor(props,context){
   super(props,context);
-  this.state = xxx
+  this.state = xxx//原来的 getinitialstate()
 }
 ```
 * getInitalState
 初始化state值,实例创建调用一次,已可访问props
+PS:在ES6中被取消...需要在constructor中设置
 * componentWillMount
 将要渲染
 * render
@@ -42,7 +43,7 @@ constructor(props,context){
 * componentDidmount
   真实的DOM被渲染出来后调用，在该方法中可通过this.getDOMNode()访问到真实的DOM元素。此时已可以使用其他类库来操作这个DOM。
 **实例化完成后如果有更新则不在执行getDefalutProps,只执行剩下的几个**
-#####存在阶段
+##### 存在阶段
 * componentWillReceiveProps
   组件接收到新的props时调用，并将其作为参数nextProps使用，此时可以更改组件props及state
 * shouldComponentUpdate
@@ -51,7 +52,7 @@ constructor(props,context){
 接收到新的props或者state后，进行渲染之前调用，此时不允许更新props或state。(以免造成死循环）
 * componentDidUpdata
 数据渲染完成
-#####销毁阶段
+##### 销毁阶段
 * componentWillUnmount
 组件被移除之前被调用，可以用于做一些清理工作，在componentDidMount方法中添加的所有任务都需要在该方法中撤销，比如创建的定时器或添加的事件监听器。
 
@@ -84,8 +85,27 @@ getDefaultProps(){
 ####Promise
 ...
 ...
-####Fetch
+#### Fetch
 需要安装 wahtwg-fetch,以及 es6-promise
+路由转发:webpack中增加:
+```
+devServer: {  
+        //其实很简单的，只要配置这个参数就可以了  
+        proxy: {  
+            '/engineer/*': {  
+                target: 'http://dws.XXXXX.com',  
+                secure: false  
+            }  
+        }  
+    }  
+```
 #### react-router
 * install,import { Router,Route,IndexRoute} from 'react-router';
-* 配置路由文件,
+* 配置路由文件
+#### 数据传递
+父组件写在子组件标签上的名字直接作为子组件的props名 无需定义 
+```
+父组件:<NowLive courseNow={this.state.data}></NowLive>
+子组件:  {this.props.courseNow.length}
+
+```
