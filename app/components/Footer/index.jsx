@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import './footer.scss';
 
 class Footer extends Component {
-    render() {
+    componentDidMount(){
+       console.log(document.body.clientHeight,window.screen.height);
+       window.addEventListener('resize',function(){
+            console.log(document.body.clientHeight,window.screen.height);
+       })
+    }   
+     render() {
         return (
             <div>
                 <footer id="footer">

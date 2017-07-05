@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
-import PureRenderMixin from 'react-addons-pure-render-mixin'
-import './nowlive.scss'
-class NowLive extends Component {
-   constructor(props, context) {
-        super(props, context);
-        this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
-    }
+import './courseThumb.scss'
+
+class CourseThumb extends Component {
     render() {
+        let item = this.props.data
         return (
-            <div>
-                {this.props.courseNow.map( (item,index) => {
-                    return   <div>
                 <div className="courselist">
                     <div className=" thumbnail">
                         <div className="imgbox ">
@@ -26,13 +20,8 @@ class NowLive extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
-                }
-
-                )}
-            </div>
         );
     }
 }
 
-export default NowLive;
+export default CourseThumb;

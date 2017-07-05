@@ -4,7 +4,7 @@ import './carousel.scss'
 class Carousel extends Component {
     render() {
         return (
-            <div>
+            <div className="container">
                 <div className="carousel slide" id="carousel" data-interval="5000" data-ride="carousel" data-pause="hover">
                     <ol className="carousel-indicators">
                         <li data-target="#carousel" data-slide-to="0" className="active"></li>

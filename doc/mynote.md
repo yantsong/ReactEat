@@ -109,3 +109,13 @@ devServer: {
 子组件:  {this.props.courseNow.length}
 
 ```
+#### 循环
+```
+  {this.props.courseNow.map( (item,index) => {
+                    return   <div key={index}>//这里加key reactdom比较需要,免报错
+                <div className="courselist col-md-3">
+                    {item.xx}
+                </div>
+            </div>
+```
+ 

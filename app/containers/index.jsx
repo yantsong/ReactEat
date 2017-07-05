@@ -8,6 +8,8 @@ class App extends React.Component {
         super(props, context);
         this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this);
     }
+    componentDidMount(){
+    }
     render() {
         return (
             <div>
