@@ -76,12 +76,20 @@ getDefaultProps(){
 * 通过filter来删除
 * 通过数组的length来给数组中的元素动态添加id
 #####  redux
+
+应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。
+惟一改变 state 的办法是触发 action，一个描述发生什么的对象。
+为了描述 action 如何改变 state 树，你需要编写 reducers。
+
 基本流程:
 0. import creatStore from redux
 1. 定义规则 即reducer ,即定义一个函数fn
 2. 根据规则生成store,即 let store = createStrore(fn);
 3. 定义数据变化后的函数即 store.subscribe(fn)
 4. 触发数据变化,即store.dispatch
+
+操作流程:
+npm i redux redux-react
 ####Promise
 ...
 ...

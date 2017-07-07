@@ -10,8 +10,8 @@ class Footer extends Component {
     }   
      render() {
         return (
-            <div>
-                <footer id="footer">
+            <div id="footer">
+                <footer>
     <div className="container">
         <div className="row">
             <section className="link">

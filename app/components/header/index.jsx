@@ -4,8 +4,8 @@ import './header.scss';
 class Header extends Component {
     render() {
         return (
-            <div>
-              <header id="head">
+            <div id="head">
+              <header>
                 <div className="container">
                     <div className="row">
                           <div className="col-md-2 col-sm-3">

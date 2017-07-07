@@ -18,37 +18,45 @@ resultHandle(result){
        return res.json()
    }).then( js => {
        this.setState({
-           data: this.state.data.concat(js)
+           data: this.state.data.concat(js),
+           isLoading:false
        }) 
    })
 }
 getData(){
+    this.setState({
+        isLoading:true
+    })
    let result = getHomeData();
    this.resultHandle(result);
 
 }
 componentDidMount(){
 this.getData();
-console.log(document.body.clientHeight,document.body.scrollTop,document.body.offsetHeight,window.innerHeight);
+let gdfc
 window.addEventListener('scroll',function(){
-    //窗口高度
+    //节流,每次都会清除上一次定时器，直到没有新的动作,计时器才会执行
+    clearTimeout(gdfc)
+    gdfc = setTimeout( () => {
     let inHt = window.innerHeight;
     //卷起高度
     let sHt = document.body.scrollTop;
     //可用高度
     let cHt = document.body.scrollHeight;
 
-    console.log(inHt,sHt,cHt);
-    if( inHt + sHt >= cHt){
-        console.log(inHt,sHt,cHt);
+    if( inHt + sHt == cHt){
         this.getData();
     }
+   },1000)
+   
+    //窗口高度
+   
 
 }.bind(this))
 }
      render() {
         return (
-            <div>
+            <div className="main">
               <Carousel></Carousel>
               <div className="container"><WillShow courseNow={this.state.data}></WillShow></div>
               <LoadMore loading={this.state.isLoading}></LoadMore>
@@ -61,5 +69,5 @@ window.addEventListener('scroll',function(){
 
 
 // 使用 require.ensure 异步加载，还不支持 ES6 的 export 
-// export default Home
-module.exports = Home
+export default Home
+// module.exports = Home
