@@ -1,9 +1,14 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
+import { bindActionCreators } from 'redux'
+
 import {getHomeData} from './../../fetch/home/home.js'
 import Carousel from './../../components/carousel/carousel.jsx'
 import WillShow from './willShow/willShow.jsx'
 import LoadMore from '../../components/loadMore/loadMore'
+import { connect } from 'react-redux'
+import {getCourse} from '../../redux/actions/action.js'
+
 class Home extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -21,6 +26,7 @@ resultHandle(result){
            data: this.state.data.concat(js),
            isLoading:false
        }) 
+       this.props.getDataActions(this.state.data)
    })
 }
 getData(){
@@ -32,6 +38,7 @@ getData(){
 
 }
 componentDidMount(){
+  
 this.getData();
 let gdfc
 window.addEventListener('scroll',function(){
@@ -64,10 +71,17 @@ window.addEventListener('scroll',function(){
         )
     }
 }
+//redux-react
 
+function mapStateToProps(state) {
+    return {
+    }
+}
 
+function mapDispatchToProps(dispatch) {
+    return {
+        getDataActions: bindActionCreators(getCourse, dispatch),
+    }
+}
 
-
-// 使用 require.ensure 异步加载，还不支持 ES6 的 export 
-export default Home
-// module.exports = Home
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
