@@ -11,11 +11,6 @@ import './styles.scss'
 
 const store = createStore(moreData, devToolsEnhancer());
 
-
-      store.subscribe(() =>
-  console.log(store.getState().getMoreData)
-);
-
   render(
         <Provider store={store}>
             <RouteMap history={hashHistory} />

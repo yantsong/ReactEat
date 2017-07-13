@@ -9,11 +9,9 @@ const initialState = {
 function getMoreData(state = initialState, action) {
     switch (action.type) {
         case MORECOURSE:
-            console.log(action.data);
-            return action.data
-                // Object.assign({}, state, {
-                //     coursedata: action.data
-                // })
+            return Object.assign({}, state, {
+                coursedata: action.data
+            })
         default:
             return state
     }

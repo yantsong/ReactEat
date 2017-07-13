@@ -8,6 +8,7 @@ import WillShow from './willShow/willShow.jsx'
 import LoadMore from '../../components/loadMore/loadMore'
 import { connect } from 'react-redux'
 import {getCourse} from '../../redux/actions/action.js'
+import {getDouBanApi} from '../../fetch/home/home.js'
 
 class Home extends React.Component {
     constructor(props, context) {
@@ -35,10 +36,16 @@ getData(){
     })
    let result = getHomeData();
    this.resultHandle(result);
-
 }
 componentDidMount(){
-  
+  let dou = getDouBanApi();
+  dou.then(function(response) {
+            return response.json()
+        }).then(function(json) {
+            console.log('parsed json1', json)
+        }).catch(function(ex) {
+            console.log('parsing failed', ex)
+        })
 this.getData();
 let gdfc
 window.addEventListener('scroll',function(){

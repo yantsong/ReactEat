@@ -1,8 +1,13 @@
 import 'whatwg-fetch'
 import 'es6-promise'
+import fetchJsonp from 'fetch-jsonp'
 
 
 const BASEURL = 'http://localhost:8088'
+
+export function getjsonp(url) {
+    return fetchJsonp(url)
+}
 
 export function get(url) {
     return fetch(
